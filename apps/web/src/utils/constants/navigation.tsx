@@ -8,6 +8,7 @@ import MaterialSymbolsLoginRounded from '@/components/icons/material-symbols/Mat
 import MaterialSymbolsPersonAddOutlineRounded from '@/components/icons/material-symbols/MaterialSymbolsPersonAddOutlineRounded';
 import PhTipJarFill from '@/components/icons/ph/PhTipJarFill';
 
+import MaterialSymbolsVisibilityLock from '@/components/icons/material-symbols/MaterialSymbolsVisibilityLock';
 import BxBxlTelegram from '../../components/icons/bx/BxBxlTelegram';
 import BxBxsDonateHeart from '../../components/icons/bx/BxBxsDonateHeart';
 import IconamoonCommentFill from '../../components/icons/iconamoon/IconamoonCommentFill';
@@ -367,7 +368,7 @@ const SOCIAL_GROUP: Hikka.NavRoute[] = [
     },
 ];
 
-export const APP_SIDEBAR: { title_ua: string; items: Hikka.NavRoute[] }[] = [
+export const APP_SIDEBAR: { title_ua: string; items: Hikka.NavRoute[]; }[] = [
     {
         title_ua: 'Контент',
         items: CONTENT_GROUP,
@@ -413,6 +414,11 @@ export const SETTINGS_MENU = [
         title: 'Безпека',
         icon: MaterialSymbolsLockOpenRounded,
         href: '/settings/security',
+    },
+    {
+        title: 'Приватність',
+        icon: MaterialSymbolsVisibilityLock,
+        href: '/settings/privacy',
     },
     {
         title: 'Список',
@@ -481,7 +487,7 @@ const PROFILE_OTHER_GROUP: Hikka.NavRoute[] = [
     },
 ];
 
-export const PROFILE_MENU: { title_ua: string; items: Hikka.NavRoute[] }[] = [
+export const PROFILE_MENU: { title_ua: string; items: Hikka.NavRoute[]; }[] = [
     {
         title_ua: 'Загальне',
         items: PROFILE_GENERAL_GROUP,

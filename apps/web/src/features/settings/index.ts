@@ -31,3 +31,6 @@ export { default as ClientCreateButton } from './applications/client-create-butt
 
 // Notifications Settings
 export { default as NotificationsSettings } from './notifications';
+
+// Privacy Settings
+export { default as PrivacySettings } from './privacy';

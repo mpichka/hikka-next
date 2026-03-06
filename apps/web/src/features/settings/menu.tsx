@@ -8,14 +8,14 @@ import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 import { SETTINGS_MENU } from '@/utils/constants/navigation';
 
-interface Props {}
+interface Props { }
 
 const Menu: FC<Props> = () => {
     const pathname = usePathname();
 
     return (
         <Tabs defaultValue={SETTINGS_MENU[0].href} value={pathname}>
-            <TabsList className="no-scrollbar w-full justify-start overflow-auto ">
+            <TabsList className="no-scrollbar w-auto justify-start overflow-auto ">
                 {SETTINGS_MENU.map((item) => (
                     <TabsTrigger asChild key={item.href} value={item.href}>
                         <Link href={item.href}>
