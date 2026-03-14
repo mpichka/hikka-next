@@ -97,11 +97,14 @@ export interface CollectionArgs {
  * Collections list request parameters
  */
 export interface CollectionsListArgs {
+    query?: string;
     sort?: string[];
     content?: string[];
     content_type?: CollectionContentType;
     author?: string;
     only_public?: boolean;
+    nsfw?: boolean;
+    spoiler?: boolean;
 }
 
 /**

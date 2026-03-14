@@ -10,6 +10,7 @@ import MaterialSymbolsFace3 from '@/components/icons/material-symbols/MaterialSy
 import MaterialSymbolsMenuBookRounded from '@/components/icons/material-symbols/MaterialSymbolsMenuBookRounded';
 import MaterialSymbolsPalette from '@/components/icons/material-symbols/MaterialSymbolsPalette';
 import MaterialSymbolsPerson from '@/components/icons/material-symbols/MaterialSymbolsPerson';
+import MaterialSymbolsStack from '@/components/icons/material-symbols/MaterialSymbolsStack';
 import { buttonVariants } from '@/components/ui/button';
 import {
     Select,
@@ -67,6 +68,11 @@ const SEARCH_TYPES: SearchType[] = [
         slug: ContentTypeEnum.USER,
         title_ua: 'Користувач',
         icon: <MaterialSymbolsAccountBox className="!size-4" />,
+    },
+    {
+        slug: ContentTypeEnum.COLLECTION,
+        title_ua: 'Колекції',
+        icon: <MaterialSymbolsStack className="!size-4" />,
     },
 ];
 

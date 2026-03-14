@@ -137,13 +137,13 @@ const CollectionCard: FC<Props> = ({
                         )}
                         watch={
                             'watch' in item.content &&
-                            item.content.watch.length > 0
+                                item.content.watch.length > 0
                                 ? item.content.watch[0]
                                 : undefined
                         }
                         read={
                             'read' in item.content &&
-                            item.content.read.length > 0
+                                item.content.read.length > 0
                                 ? item.content.read[0]
                                 : undefined
                         }

@@ -89,6 +89,8 @@ export const queryKeys = {
     // Collections module keys
     collections: {
         all: ['collections'] as const,
+        search: (params: unknown) =>
+            [...queryKeys.collections.all, 'search', params] as const,
         list: (args: unknown, paginationArgs?: PaginationArgs) =>
             [
                 ...queryKeys.collections.all,

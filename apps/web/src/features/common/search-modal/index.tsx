@@ -10,6 +10,7 @@ import useDebounce from '@/services/hooks/use-debounce';
 import SearchButton from './components/search-button';
 import AnimeSearchList from './components/search-lists/anime-search-list';
 import CharacterSearchList from './components/search-lists/character-search-list';
+import CollectionSearchList from './components/search-lists/collection-search-list';
 import MangaSearchList from './components/search-lists/manga-search-list';
 import NovelSearchList from './components/search-lists/novel-search-list';
 import PersonSearchList from './components/search-lists/person-search-list';
@@ -24,6 +25,36 @@ interface Props {
     content_type?: ContentTypeEnum;
     allowedTypes?: ContentTypeEnum[];
 }
+
+interface SearchListGeneralProps {
+    onDismiss: (content: MainContent | UserResponse) => void;
+    type?: 'link' | 'button';
+    children?: ReactNode;
+    value?: string;
+}
+
+const getSearchList = (type: ContentTypeEnum): FC<SearchListGeneralProps> => {
+    switch (type) {
+        case ContentTypeEnum.ANIME:
+            return AnimeSearchList;
+        case ContentTypeEnum.MANGA:
+            return MangaSearchList;
+        case ContentTypeEnum.NOVEL:
+            return NovelSearchList;
+        case ContentTypeEnum.CHARACTER:
+            return CharacterSearchList;
+        case ContentTypeEnum.PERSON:
+            return PersonSearchList;
+        case ContentTypeEnum.USER:
+            return UserSearchList;
+        case ContentTypeEnum.COLLECTION:
+            return CollectionSearchList;
+        default:
+            const message = 'Unknown search type. ' +
+                'Did you forget to add component for the new search type?';
+            throw new Error(message);
+    }
+};
 
 const SearchModal: FC<Props> = ({
     onClick,
@@ -73,6 +104,8 @@ const SearchModal: FC<Props> = ({
 
     useSearchModal({ open, setOpen, onClick, content_type, setSearchType });
 
+    const SearchList = getSearchList(searchType);
+
     return (
         <Fragment>
             <SearchButton setOpen={setOpen}>{children}</SearchButton>
@@ -102,53 +135,11 @@ const SearchModal: FC<Props> = ({
                     />
                 </CommandInput>
 
-                {searchType === 'anime' && (
-                    <AnimeSearchList
-                        onDismiss={onDismiss}
-                        value={value}
-                        type={type}
-                    />
-                )}
-
-                {searchType === 'manga' && (
-                    <MangaSearchList
-                        onDismiss={onDismiss}
-                        value={value}
-                        type={type}
-                    />
-                )}
-
-                {searchType === 'novel' && (
-                    <NovelSearchList
-                        onDismiss={onDismiss}
-                        value={value}
-                        type={type}
-                    />
-                )}
-
-                {searchType === 'character' && (
-                    <CharacterSearchList
-                        onDismiss={onDismiss}
-                        value={value}
-                        type={type}
-                    />
-                )}
-
-                {searchType === 'person' && (
-                    <PersonSearchList
-                        onDismiss={onDismiss}
-                        value={value}
-                        type={type}
-                    />
-                )}
-
-                {searchType === 'user' && (
-                    <UserSearchList
-                        onDismiss={onDismiss}
-                        value={value}
-                        type={type}
-                    />
-                )}
+                <SearchList
+                    onDismiss={onDismiss}
+                    value={value}
+                    type={type}
+                />
             </CommandDialog>
         </Fragment>
     );

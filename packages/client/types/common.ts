@@ -187,7 +187,8 @@ export type Content =
  */
 export type MainContent = Exclude<
     Content,
-    CollectionResponse<CollectionContent> | ArticleBaseResponse
+    ArticleBaseResponse
+    // CollectionResponse<CollectionContent> | ArticleBaseResponse
 >;
 
 /**
