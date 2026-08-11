@@ -55,7 +55,6 @@ const FILTER_REGISTRY: Record<string, FilterDef> = {
     seasons: { kind: 'enum', labelMap: SEASON },
     types: { kind: 'enum', labelMap: MEDIA_TYPE },
     ratings: { kind: 'enum', labelMap: AGE_RATING },
-    media_type: { kind: 'enum', labelMap: MEDIA_TYPE },
     content_type: { kind: 'enum', labelMap: CONTENT_TYPES },
 
     // Enum params with dynamic label maps (fetched from API)
@@ -69,16 +68,22 @@ const FILTER_REGISTRY: Record<string, FilterDef> = {
     // Boolean params
     only_translated: { kind: 'boolean', label: 'Перекладено українською' },
 
-    // Missing-data flags of the /edit/content lists
-    title_ua: { kind: 'boolean', label: 'Без назви українською' },
-    title_en: { kind: 'boolean', label: 'Без назви англійською' },
-    title_original: { kind: 'boolean', label: 'Без оригінальної назви' },
-    synopsis_ua: { kind: 'boolean', label: 'Без опису українською' },
-    synopsis_en: { kind: 'boolean', label: 'Без опису англійською' },
-    name_ua: { kind: 'boolean', label: 'Без імені українською' },
-    name_en: { kind: 'boolean', label: 'Без імені англійською' },
-    name_original: { kind: 'boolean', label: 'Без оригінального імені' },
-    description_ua: { kind: 'boolean', label: 'Без опису українською' },
+    // Missing-data flags of the /edit/content lists (media + person/character issues)
+    issues: {
+        kind: 'enum',
+        tristate: true,
+        labelMap: {
+            title_ua: { title_ua: 'Назва (укр)' },
+            title_en: { title_ua: 'Назва (англ)' },
+            title_original: { title_ua: 'Назва (ориг)' },
+            synopsis_ua: { title_ua: 'Опис (укр)' },
+            synopsis_en: { title_ua: 'Опис (англ)' },
+            name_ua: { title_ua: "Ім'я (укр)" },
+            name_en: { title_ua: "Ім'я (англ)" },
+            name_original: { title_ua: "Ім'я (ориг)" },
+            description_ua: { title_ua: 'Опис (укр)' },
+        },
+    },
 
     // Value params (the chip carries the entered value)
     mal_id: { kind: 'value', label: 'MAL ID' },

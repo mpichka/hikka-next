@@ -3,7 +3,7 @@ import { defineConfig } from '@hey-api/openapi-ts';
 import { transformSpec } from './scripts/transform-spec';
 
 const SPEC_URL =
-    process.env.HIKKA_OPENAPI_URL ?? 'https://api.hikka.io/openapi.json';
+    process.env.HIKKA_OPENAPI_URL ?? 'http://localhost:8888/openapi.json';
 
 /**
  * Hikka list/search endpoints are POST (filters in the body, `page`/`size` in
@@ -23,6 +23,11 @@ const QUERY_POST_PATHS = new Set([
     '/schedule/anime',
     '/client/all',
     '/edit/list',
+    '/edit/todo/anime',
+    '/edit/todo/manga',
+    '/edit/todo/novel',
+    '/edit/todo/characters',
+    '/edit/todo/people',
     '/user/list',
     '/favourite/{content_type}/{username}/list',
     '/watch/{username}/list',
