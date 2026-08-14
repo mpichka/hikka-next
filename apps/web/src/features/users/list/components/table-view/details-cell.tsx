@@ -26,7 +26,7 @@ type Props = {
     content: MangaResponse | NovelResponse | AnimeResponse;
     content_type: MainContentTypeEnum;
     repeats: number;
-    note?: string;
+    note?: string | null;
 };
 
 const DetailsCell: FC<Props> = ({ content, content_type, repeats, note }) => {
